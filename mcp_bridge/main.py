@@ -61,7 +61,6 @@ def run():
         app,
         host=config.network.host,
         port=config.network.port,
-        root_path=config.network.root_path,
     )
 
 if __name__ == "__main__":
