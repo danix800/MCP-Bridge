@@ -14,6 +14,7 @@ from uuid import UUID, uuid4
 
 import anyio
 from anyio.streams.memory import MemoryObjectReceiveStream, MemoryObjectSendStream
+from mcp_bridge.config import config
 from pydantic import ValidationError
 from sse_starlette import EventSourceResponse
 from fastapi.requests import Request
@@ -51,7 +52,7 @@ class SseServerTransport:
         """
 
         super().__init__()
-        self._endpoint = endpoint
+        self._endpoint = f"{config.network.root_path}{endpoint}"
         self._read_stream_writers = {}
         logger.debug(f"SseServerTransport initialized with endpoint: {endpoint}")
 
